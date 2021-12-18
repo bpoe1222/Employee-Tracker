@@ -1,9 +1,8 @@
 const inquirer = require('inquirer');
-var prompt = inquirer.createPromptModule();
 
 // Inital Prompt - Main Menu
 const promptUser = () => {
-        prompt({
+        inquirer.prompt({
             type: 'list',
             name: 'Choice List',
             message: 'What are we doing today? (Select one of the following)',
@@ -16,10 +15,10 @@ const promptUser = () => {
                     viewAllEmployees();
                     break;
                 case 'Add Employee':
-                    addEmployees();
+                    addEmployee();
                     break;
                 case 'Update Employee Role':
-                    updateEmployee();
+                    updateEmployeeRole();
                     break;
                 case 'View Departments':
                     viewAllDepartments();
@@ -33,15 +32,13 @@ const promptUser = () => {
                 case 'Add Role':
                     addRole();
                     break;
-                case 'Exit':
-                    break;
             }
         })
 };
 
 // You must export your module before you require module for circular page being required
 module.exports = { promptUser }
-const { viewAllEmployees, addEmployees, updateEmployee } = require('./lib/employee');
+const { viewAllEmployees, addEmployee, updateEmployeeRole } = require('./lib/employee');
 const { viewAllDepartments, addDepartment } = require('./lib/department-methods');
 const { viewRoles, addRole } = require('./lib/roles-methods');
 
